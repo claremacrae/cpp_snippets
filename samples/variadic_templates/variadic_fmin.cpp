@@ -19,4 +19,8 @@ auto variadic_fmin(const First& f, const T& ... t) -> First
 int main()
 {
     std::cout << variadic_fmin(-1.3f, NAN, 3.0f) << '\n';
+
+    // Note that the type of our minimum value determines the return type.
+    // So the first value is an int, then the minimum value is comverted to int.
+    std::cout << variadic_fmin(7, -1.3f, NAN, 3.0f) << '\n';
 }
