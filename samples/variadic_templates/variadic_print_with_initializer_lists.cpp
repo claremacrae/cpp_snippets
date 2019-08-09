@@ -1,5 +1,5 @@
 // Code from https://youtu.be/o1EvPhz6UNE?t=993
-// C++ Weekly - Ep 6 Intro To Variadic Templates
+// C++ Weekly - Ep 6 Intro To Variadic Templates - initializer list example
 
 #include <sstream>
 #include <iostream>
@@ -13,6 +13,8 @@ std::string to_string_impl(const T& t)
     return ss.str();
 }
 
+// This is an alternative to variadic_printing_with_recursion.cpp that is 
+// quicker to compile, and generates smaller binaries.
 template <typename ... Param>
 std::vector<std::string> to_string(const Param& ... param)
 {
