@@ -169,7 +169,7 @@ script:
   - cd .build
   - cmake ..
   - cmake --build .
-  - ctest --verbose
+#  - ctest --verbose
 
 notifications:
   email: true

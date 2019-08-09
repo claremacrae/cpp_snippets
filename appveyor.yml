@@ -18,5 +18,5 @@ before_build:
 build_script:
 - cmd: cmake --build .
 
-test_script:
-- cmd: ctest --verbose --parallel 4 -C Debug
+#test_script:
+#- cmd: ctest --verbose --parallel 4 -C Debug
