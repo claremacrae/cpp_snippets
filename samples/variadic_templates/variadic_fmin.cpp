@@ -17,5 +17,5 @@ decltype(auto) variadic_fmin(const First& f, const T& ... t)
 
 int main()
 {
-    std::cout << variadic_fmin(-1.3f, NAN, 3.0f) << '\n';
+    std::cout << variadic_fmin(-1.3f, NAN, 3.0f, -5) << '\n';
 }
