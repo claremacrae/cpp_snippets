@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
+project(variadic_teamplates)
 
 add_executable(
     variadic_printing
