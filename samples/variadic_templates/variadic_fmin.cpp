@@ -20,7 +20,7 @@ int main()
 {
     std::cout << variadic_fmin(-1.3f, NAN, 3.0f) << '\n';
 
-    // Note that the type of our minimum value determines the return type.
-    // So the first value is an int, then the minimum value is comverted to int.
+    // Note that the type of first supplied value determines the return type.
+    // So if the first value is an int, then the minimum value is comverted to int.
     std::cout << variadic_fmin(7, -1.3f, NAN, 3.0f) << '\n';
 }
