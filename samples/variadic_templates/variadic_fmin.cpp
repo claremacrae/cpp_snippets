@@ -1,4 +1,5 @@
 // Code from https://youtu.be/Mzi5SHi13MM?t=105
+// With fix for C++11 compilation failure: https://gcc.godbolt.org/z/HBO7IC
 // C++ Weekly - Ep 66 - Variadic fmin for C++11
 
 #include <algorithm>
@@ -7,7 +8,7 @@
 #include <initializer_list>
 
 template<typename First, typename ... T>
-decltype(auto) variadic_fmin(const First& f, const T& ... t)
+auto variadic_fmin(const First& f, const T& ... t) -> First
 {
     First retval = f;
     // Initializer list ends up holding all the minimum calculations along the way
@@ -17,5 +18,5 @@ decltype(auto) variadic_fmin(const First& f, const T& ... t)
 
 int main()
 {
-    std::cout << variadic_fmin(-1.3f, NAN, 3.0f, -5) << '\n';
+    std::cout << variadic_fmin(-1.3f, NAN, 3.0f) << '\n';
 }
