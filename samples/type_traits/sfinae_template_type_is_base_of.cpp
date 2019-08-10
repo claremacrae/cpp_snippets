@@ -24,7 +24,7 @@ void function(const T& object) // ... or things inherited from Derived
 template<
     class T,
     typename std::enable_if<! std::is_base_of<Derived, T>::value, int>::type = 0>
-void function(const T& object) // ... or things inherited from Derived
+void function(const T& object) // ... things not inherited from Derived
 {
     std::cout << object.in_base() << '\n';
 }

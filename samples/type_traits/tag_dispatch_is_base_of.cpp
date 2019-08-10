@@ -20,7 +20,7 @@ void function_impl(std::true_type, const T& object) // ... or things inherited f
 }
 
 template<class T>
-void function_impl(std::false_type, const T& object) // ... or things inherited from Derived
+void function_impl(std::false_type, const T& object) // ... things not inherited from Derived
 {
     std::cout << object.in_base() << '\n';
 }

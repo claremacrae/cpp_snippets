@@ -21,7 +21,7 @@ function(const T& object) // ... or things inherited from Derived
 
 template<class T>
 typename std::enable_if<! std::is_base_of<Derived, T>::value>::type // This is the return type
-function(const T& object) // ... or things inherited from Derived
+function(const T& object) // ... things not inherited from Derived
 {
     std::cout << object.in_base() << '\n';
 }

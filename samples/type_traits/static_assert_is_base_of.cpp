@@ -18,7 +18,7 @@ void can_only_be_passed_derived(const T& object) // ... or things inherited from
 }
 
 template<class T>
-void must_not_be_passed_derived(const T& object) // ... or things inherited from Derived
+void must_not_be_passed_derived(const T& object) // ... things not inherited from Derived
 {
     static_assert(!std::is_base_of<Derived,T>(), "Derived no subclasses, please");
     std::cout << object.in_base() << '\n';
