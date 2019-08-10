@@ -19,3 +19,8 @@ add_executable(
     sfinae_template_type_is_base_of
     sfinae_template_type_is_base_of.cpp
 )
+
+add_executable(
+    tag_dispatch_is_base_of
+    tag_dispatch_is_base_of.cpp
+)
