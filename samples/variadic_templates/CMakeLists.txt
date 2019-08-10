@@ -12,3 +12,8 @@ add_executable(
 add_executable(
     variadic_printing_with_recursion
     variadic_printing_with_recursion.cpp)
+
+add_executable(
+    variadic_combinations
+    variadic_combinations.cpp
+)
