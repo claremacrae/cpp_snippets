@@ -4,6 +4,7 @@ project(cpp_snippets)
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
 set(CMAKE_CXX_STANDARD 11)
+add_subdirectory(shared_code)
 add_subdirectory(samples)
 
 #if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
