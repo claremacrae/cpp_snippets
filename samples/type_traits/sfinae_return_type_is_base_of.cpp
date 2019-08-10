@@ -1,3 +1,5 @@
+#include "helper_classes.h"
+
 #include <type_traits>
 #include <iostream>
 
@@ -9,28 +11,6 @@
 // This works if function would otherwise have been void.
 // This is much better than the static_assert and different
 // function names in static_assert_is_base_of.cpp.
-
-class Base
-{
-public:
-    [[nodiscard]] int in_base() const
-    {
-        return 1;
-    }
-};
-
-class Derived : public Base
-{
-public:
-    [[nodiscard]] int in_derived() const
-    {
-        return 2;
-    }
-};
-
-class DerivedFromDerived : public Derived
-{
-};
 
 template<class T>
 typename std::enable_if<std::is_base_of<Derived, T>::value>::type // This is the return type

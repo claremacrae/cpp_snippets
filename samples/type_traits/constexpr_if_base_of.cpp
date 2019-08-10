@@ -1,26 +1,10 @@
+#include "helper_classes.h"
+
 #include <type_traits>
 #include <iostream>
 
 // Works with C++17
 static_assert(__cplusplus >= 201703L, "Compile with C++17 or newer, please");
-
-class Base
-{
-public:
-    [[nodiscard]] int in_base() const
-    {
-        return 1;
-    }
-};
-
-class Derived : public Base
-{
-public:
-    [[nodiscard]] int in_derived() const
-    {
-        return 2;
-    }
-};
 
 template<typename Class>
 void print_based_on_type(const Class& object)

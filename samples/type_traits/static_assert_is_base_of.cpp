@@ -1,3 +1,5 @@
+#include "helper_classes.h"
+
 #include <type_traits>
 #include <iostream>
 
@@ -7,28 +9,6 @@
 // the "right" template function, based on some invented notion of what is
 // allowed.
 // Sub-optimal, but still it was useful for understanding std::is_base_of.
-
-class Base
-{
-public:
-    [[nodiscard]] int in_base() const
-    {
-        return 1;
-    }
-};
-
-class Derived : public Base
-{
-public:
-    [[nodiscard]] int in_derived() const
-    {
-        return 2;
-    }
-};
-
-class DerivedFromDerived : public Derived
-{
-};
 
 template<class T>
 void can_only_be_passed_derived(const T& object) // ... or things inherited from Derived
