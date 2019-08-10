@@ -32,9 +32,10 @@ class DerivedFromDerived : public Derived
 {
 };
 
+// See https://stackoverflow.com/a/38215920/104370
 template<
     class T,
-    typename = typename std::enable_if<std::is_base_of<Derived, T>::value>::type>
+    typename std::enable_if<std::is_base_of<Derived, T>::value, int>::type = 0>
 void function(const T& object) // ... or things inherited from Derived
 {
     std::cout << object.in_derived() << '\n';
@@ -42,7 +43,7 @@ void function(const T& object) // ... or things inherited from Derived
 
 template<
     class T,
-    typename = typename std::enable_if<! std::is_base_of<Derived, T>::value>::type>>
+    typename std::enable_if<! std::is_base_of<Derived, T>::value, int>::type = 0>
 void function(const T& object) // ... or things inherited from Derived
 {
     std::cout << object.in_base() << '\n';
