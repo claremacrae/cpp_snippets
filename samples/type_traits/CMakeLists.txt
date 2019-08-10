@@ -9,3 +9,8 @@ add_executable(
     static_assert_is_base_of
     static_assert_is_base_of.cpp
 )
+
+add_executable(
+    sfinae_return_type_is_base_of
+    sfinae_return_type_is_base_of.cpp
+)
