@@ -1,6 +1,9 @@
 #include <type_traits>
 #include <iostream>
 
+// Works with C++17
+static_assert(__cplusplus >= 201703L, "Compile with C++17 or newer, please");
+
 class Base
 {
 public:
