@@ -4,7 +4,8 @@
 #include <iostream>
 
 // Works with C++17
-static_assert(__cplusplus >= 201703L, "Compile with C++17 or newer, please");
+// __cplusplus is 199711 in VS2017 and VS2019!!!
+// static_assert(__cplusplus >= 201703L, "Compile with C++17 or newer, please");
 
 template<typename Class>
 void print_based_on_type(const Class& object)
@@ -26,6 +27,7 @@ void print_based_on_type(const Class& object)
 
 int main()
 {
+    std::cout << "__cplusplus: " << __cplusplus << '\n';
     {
         Base b;
         print_based_on_type(b);
