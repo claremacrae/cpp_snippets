@@ -1,37 +1,26 @@
 #include <initializer_list>
 #include <iostream>
 
+// Variadic function that takes any number of containers.
+// Initially, just prints container size
+
 template<typename T>
 void combinations_impl(const T& t)
 {
     std::cout << t.size() << '\n';
 }
 
-//template <typename ... Container>
-//void combinations(const Container& ... container)
-//{
-//    // Using initializer list:
-//    {combinations_impl(container)...};
-//}
-
-template<typename C1>
-void combinations(const C1& c1)
+// Handle the final, empty case
+void combinations()
 {
-    combinations_impl(c1);
 }
 
-template<typename C1, typename C2>
-void combinations(const C1& c1, const C2& c2)
+template<typename C1, typename ... C>
+void combinations(const C1& c1, const C& ... c)
 {
     combinations_impl(c1);
-    combinations(c2);
-}
-
-template<typename C1, typename C2, typename C3>
-void combinations(const C1& c1, const C2& c2, const C3& c3)
-{
-    combinations_impl(c1);
-    combinations(c2, c3);
+    // Then print the remainder
+    combinations(c...);
 }
 
 int main()
