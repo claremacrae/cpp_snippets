@@ -20,5 +20,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC . ${ApprovalTestsDir}/Approval
 
 target_link_libraries(${PROJECT_NAME} ApprovalTests)
 
+add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+
 # This is for building any programs that depend on other than C++11
 add_subdirectory(type_traits)
