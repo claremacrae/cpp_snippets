@@ -3,6 +3,9 @@ project(cpp_snippets)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
+set(ApprovalTestsDir ${CMAKE_SOURCE_DIR}/third_party/ApprovalTests.cpp)
+add_subdirectory(${ApprovalTestsDir}/ApprovalTests  build_approvals EXCLUDE_FROM_ALL)
+
 set(CMAKE_CXX_STANDARD 11)
 add_subdirectory(shared_code)
 add_subdirectory(samples)
