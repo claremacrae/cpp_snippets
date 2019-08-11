@@ -13,10 +13,18 @@ environment:
 #    - more_travis_builds
 
 before_build:
-- cmd: cmake -G %GENERATOR% .
+- cmd: >-
+
+    git submodule update --init --recursive
+
+    cmake -G %GENERATOR% .
+
+    cmake --version
+
+    where fc
 
 build_script:
 - cmd: cmake --build .
 
-#test_script:
-#- cmd: ctest --verbose --parallel 4 -C Debug
+test_script:
+- cmd: ctest --verbose -C Debug --output-on-failure
