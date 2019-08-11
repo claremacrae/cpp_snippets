@@ -1,8 +1,10 @@
 // Code from https://youtu.be/o1EvPhz6UNE?t=661
 // C++ Weekly - Ep 6 Intro To Variadic Templates - recursive example
 
+#include "Catch.hpp"
+#include "Approvals.h"
+
 #include <sstream>
-#include <iostream>
 #include <vector>
 
 template<typename T>
@@ -34,11 +36,13 @@ std::vector<std::string> to_string(const P1& p1, const Param& ... param)
     return s;
 }
 
-int main()
+TEST_CASE("Variadic Printing With Recursion")
 {
+    std::stringstream ss;
     const auto vec = to_string("hello", 1, 5.3, "World");
     for (const auto& v : vec)
     {
-        std::cout << v << '\n';
+        ss << v << '\n';
     }
+    Approvals::verify(ss.str());
 }

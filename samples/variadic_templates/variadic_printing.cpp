@@ -2,21 +2,26 @@
 // C++ Weekly - Ep 10 Variadic Expansion Wrap-Up
 // In godbolt at https://godbolt.org/z/4jIxgF
 
+#include "Catch.hpp"
+#include "Approvals.h"
+
 #include <iostream>
 
 template<typename T>
-void print_impl(const T& t)
+void print_impl(std::ostream& ss, const T& t)
 {
-    std::cout << t << '\n';
+    ss << t << '\n';
 }
 
 template<typename ... T>
-void print(const T& ... t)
+void print(std::ostream& ss, const T& ... t)
 {
-    (void)std::initializer_list<int>{ (print_impl(t), 0)...};
+    (void)std::initializer_list<int>{ (print_impl(ss, t), 0)...};
 }
 
-int main()
+TEST_CASE("Variadic Printing")
 {
-    print("Hello", 42, "World");
+    std::stringstream ss;
+    print(ss, "Hello", 42, "World");
+    Approvals::verify(ss.str());
 }

@@ -1,8 +1,10 @@
 // Code from https://youtu.be/o1EvPhz6UNE?t=993
 // C++ Weekly - Ep 6 Intro To Variadic Templates - initializer list example
 
+#include "Catch.hpp"
+#include "Approvals.h"
+
 #include <sstream>
-#include <iostream>
 #include <vector>
 
 template<typename T>
@@ -22,11 +24,13 @@ std::vector<std::string> to_string(const Param& ... param)
     return{to_string_impl(param)...};
 }
 
-int main()
+TEST_CASE("Variadic Printing with Initializer Lists")
 {
+    std::stringstream ss;
     const auto vec = to_string("hello", 1, 5.3, "World");
     for (const auto& v : vec)
     {
-        std::cout << v << '\n';
+        ss << v << '\n';
     }
+    Approvals::verify(ss.str());
 }
