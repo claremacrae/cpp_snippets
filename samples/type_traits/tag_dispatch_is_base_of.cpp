@@ -1,7 +1,10 @@
+#include "Catch.hpp"
+#include "Approvals.h"
+
 #include "helper_classes.h"
 
 #include <type_traits>
-#include <iostream>
+#include <sstream>
 
 // Works with C++11
 
@@ -14,45 +17,39 @@
 // function names in static_assert_is_base_of.cpp.
 
 template<class T>
-void function_impl(std::true_type, const T& object) // ... or things inherited from Derived
+void function_impl(std::ostream& ss, std::true_type, const T& object) // ... or things inherited from Derived
 {
-    std::cout << object.in_derived() << '\n';
+    ss << object.in_derived() << '\n';
 }
 
 template<class T>
-void function_impl(std::false_type, const T& object) // ... things not inherited from Derived
+void function_impl(std::ostream& ss, std::false_type, const T& object) // ... things not inherited from Derived
 {
-    std::cout << object.in_base() << '\n';
+    ss << object.in_base() << '\n';
 }
 
 template<class T>
-void function(const T& object)
+void function(std::ostream& ss, const T& object)
 {
-    function_impl(std::is_base_of<Derived,T>{}, object);
+    function_impl(ss, std::is_base_of<Derived,T>{}, object);
 }
 
-int main()
+TEST_CASE("Tag Dispatch is_base_of")
 {
+    std::stringstream ss;
     {
         Base b;
-        function(b);
+        function(ss, b);
     }
 
     {
         Derived d;
-        function(d);
+        function(ss, d);
     }
 
     {
         DerivedFromDerived d;
-        function(d);
+        function(ss, d);
     }
+    Approvals::verify(ss.str());
 }
-
-
-/*
- * Output:
-1
-2
-2
- */

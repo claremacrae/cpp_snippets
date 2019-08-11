@@ -1,7 +1,10 @@
+#include "Catch.hpp"
+#include "Approvals.h"
+
 #include "helper_classes.h"
 
 #include <type_traits>
-#include <iostream>
+#include <sstream>
 
 // Works with C++11
 
@@ -14,40 +17,34 @@
 
 template<class T>
 typename std::enable_if<std::is_base_of<Derived, T>::value>::type // This is the return type
-function(const T& object) // ... or things inherited from Derived
+function(std::ostream& ss, const T& object) // ... or things inherited from Derived
 {
-    std::cout << object.in_derived() << '\n';
+    ss << object.in_derived() << '\n';
 }
 
 template<class T>
 typename std::enable_if<! std::is_base_of<Derived, T>::value>::type // This is the return type
-function(const T& object) // ... things not inherited from Derived
+function(std::ostream& ss, const T& object) // ... things not inherited from Derived
 {
-    std::cout << object.in_base() << '\n';
+    ss << object.in_base() << '\n';
 }
 
-int main()
+TEST_CASE("SFINAE Return Type is_base_of")
 {
+    std::stringstream ss;
     {
         Base b;
-        function(b);
+        function(ss, b);
     }
 
     {
         Derived d;
-        function(d);
+        function(ss, d);
     }
 
     {
         DerivedFromDerived d;
-        function(d);
+        function(ss, d);
     }
+    Approvals::verify(ss.str());
 }
-
-
-/*
- * Output:
-1
-2
-2
- */

@@ -5,7 +5,7 @@
 #include "Catch.hpp"
 #include "Approvals.h"
 
-#include <iostream>
+#include <sstream>
 
 template<typename T>
 void print_impl(std::ostream& ss, const T& t)
