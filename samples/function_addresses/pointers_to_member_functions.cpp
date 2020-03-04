@@ -27,7 +27,8 @@ public:
 
 TEST_CASE("Address of const member function compiles")
 {
-    typedef int (Class::*ClassMemFn)(char x, int y) const;
+    // typedef int (Class::*ClassMemFn)(char x, int y) const;
+    using ClassMemFn = int (Class::*)(char x, int y) const;
     ClassMemFn memFn = &Class::memberFunction;
 
     Class c;
@@ -43,7 +44,8 @@ TEST_CASE("Address of const member function compiles")
 
 TEST_CASE("Address of static member function compiles")
 {
-    typedef int (*ClassStaticFn)(char x, int y);
+    // typedef int (*ClassStaticFn)(char x, int y);
+    using ClassStaticFn = int (*)(char x, int y);
     ClassStaticFn staticFn = &Class::staticFunction;
     CHECK(42 == (*staticFn)('x', 42));
 }
