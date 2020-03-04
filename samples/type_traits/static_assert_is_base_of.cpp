@@ -1,4 +1,4 @@
-#include "Catch.hpp"
+#include "catch2/catch.hpp"
 #include "Approvals.h"
 
 #include "helper_classes.h"
@@ -47,5 +47,5 @@ TEST_CASE("Static Assert is_base_of")
         can_only_be_passed_derived(ss, d);
         // must_not_be_passed_derived(d); does not compile
     }
-    Approvals::verify(ss.str());
+    ApprovalTests::Approvals::verify(ss.str());
 }

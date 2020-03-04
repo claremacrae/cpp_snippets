@@ -1,4 +1,4 @@
-#include "Catch.hpp"
+#include "catch2/catch.hpp"
 #include "Approvals.h"
 
 #include "helper_classes.h"
@@ -51,5 +51,5 @@ TEST_CASE("Tag Dispatch is_base_of")
         DerivedFromDerived d;
         function(ss, d);
     }
-    Approvals::verify(ss.str());
+    ApprovalTests::Approvals::verify(ss.str());
 }

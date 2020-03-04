@@ -1,7 +1,7 @@
 // Code from https://youtu.be/o1EvPhz6UNE?t=661
 // C++ Weekly - Ep 6 Intro To Variadic Templates - recursive example
 
-#include "Catch.hpp"
+#include "catch2/catch.hpp"
 #include "Approvals.h"
 
 #include <sstream>
@@ -44,5 +44,5 @@ TEST_CASE("Variadic Printing With Recursion")
     {
         ss << v << '\n';
     }
-    Approvals::verify(ss.str());
+    ApprovalTests::Approvals::verify(ss.str());
 }

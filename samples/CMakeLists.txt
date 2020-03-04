@@ -14,11 +14,7 @@ add_executable(${PROJECT_NAME}
     )
 
 target_link_libraries(${PROJECT_NAME} shared_code)
-
-# TODO Improve how Catch.hpp is found - ApprovalTests.cpp/ApprovalTests/Catch2Approvals.h requires a file call Catch.hpp
-target_include_directories(${PROJECT_NAME} PUBLIC . ${ApprovalTestsDir}/ApprovalTests ${ApprovalTestsDir}/lib )
-
-target_link_libraries(${PROJECT_NAME} ApprovalTests)
+target_link_libraries(${PROJECT_NAME} ApprovalTests::ApprovalTests Catch2::Catch2)
 
 add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 

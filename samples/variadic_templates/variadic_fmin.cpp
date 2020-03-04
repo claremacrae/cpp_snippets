@@ -2,7 +2,7 @@
 // With fix for C++11 compilation failure: https://gcc.godbolt.org/z/HBO7IC
 // C++ Weekly - Ep 66 - Variadic fmin for C++11
 
-#include "Catch.hpp"
+#include "catch2/catch.hpp"
 #include "Approvals.h"
 
 #include <algorithm>
@@ -27,5 +27,5 @@ TEST_CASE("Variadic fmin")
     // Note that the type of first supplied value determines the return type.
     // So if the first value is an int, then the minimum value is comverted to int.
     ss << variadic_fmin(7, -1.3f, NAN, 3.0f) << '\n';
-    Approvals::verify(ss.str());
+    ApprovalTests::Approvals::verify(ss.str());
 }

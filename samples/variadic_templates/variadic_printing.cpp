@@ -2,7 +2,7 @@
 // C++ Weekly - Ep 10 Variadic Expansion Wrap-Up
 // In godbolt at https://godbolt.org/z/4jIxgF
 
-#include "Catch.hpp"
+#include "catch2/catch.hpp"
 #include "Approvals.h"
 
 #include <sstream>
@@ -23,5 +23,5 @@ TEST_CASE("Variadic Printing")
 {
     std::stringstream ss;
     print(ss, "Hello", 42, "World");
-    Approvals::verify(ss.str());
+    ApprovalTests::Approvals::verify(ss.str());
 }

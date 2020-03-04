@@ -1,4 +1,4 @@
-#include "Catch.hpp"
+#include "catch2/catch.hpp"
 #include "Approvals.h"
 
 #include <initializer_list>
@@ -33,5 +33,5 @@ TEST_CASE("Variadic Combinations")
     auto c3 = {2.7, 5.4, 9.3};
     std::stringstream ss;
     combinations(ss, c1, c2, c3);
-    Approvals::verify(ss.str());
+    ApprovalTests::Approvals::verify(ss.str());
 }

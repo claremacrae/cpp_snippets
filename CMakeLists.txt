@@ -5,8 +5,9 @@ enable_testing()
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
+SET(APPROVAL_TESTS_BUILD_THIRD_PARTY_CATCH2 ON CACHE BOOL "")
 set(ApprovalTestsDir ${CMAKE_SOURCE_DIR}/third_party/ApprovalTests.cpp)
-add_subdirectory(${ApprovalTestsDir}/ApprovalTests  build_approvals EXCLUDE_FROM_ALL)
+add_subdirectory(${ApprovalTestsDir})
 
 set(CMAKE_CXX_STANDARD 11)
 add_subdirectory(shared_code)
