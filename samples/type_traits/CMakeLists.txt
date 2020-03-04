@@ -4,8 +4,8 @@ project(type_traits)
 link_libraries(shared_code)
 
 add_executable(
-    constexpr_if_base_of
-    constexpr_if_base_of.cpp
+        constexpr_if_base_of
+        constexpr_if_base_of.cpp
 )
 set_property(TARGET constexpr_if_base_of PROPERTY CXX_STANDARD 17)
 
