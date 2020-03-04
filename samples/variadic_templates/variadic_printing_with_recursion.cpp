@@ -7,8 +7,7 @@
 #include <sstream>
 #include <vector>
 
-template<typename T>
-std::string to_string_impl(const T& t)
+template <typename T> std::string to_string_impl(const T& t)
 {
     std::stringstream ss;
     ss << t;
@@ -25,8 +24,8 @@ std::vector<std::string> to_string()
 // which can really slow down compilation.
 // See variadic_print_with_initializer_lists.cpp for a more efficient
 // version.
-template<typename P1, typename ... Param>
-std::vector<std::string> to_string(const P1& p1, const Param& ... param)
+template <typename P1, typename... Param>
+std::vector<std::string> to_string(const P1& p1, const Param&... param)
 {
     std::vector<std::string> s;
     s.push_back(to_string_impl(p1));

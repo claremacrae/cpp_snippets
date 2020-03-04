@@ -7,16 +7,14 @@
 
 #include <sstream>
 
-template<typename T>
-void print_impl(std::ostream& ss, const T& t)
+template <typename T> void print_impl(std::ostream& ss, const T& t)
 {
     ss << t << '\n';
 }
 
-template<typename ... T>
-void print(std::ostream& ss, const T& ... t)
+template <typename... T> void print(std::ostream& ss, const T&... t)
 {
-    (void)std::initializer_list<int>{ (print_impl(ss, t), 0)...};
+    (void)std::initializer_list<int>{(print_impl(ss, t), 0)...};
 }
 
 TEST_CASE("Variadic Printing")

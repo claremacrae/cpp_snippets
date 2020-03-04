@@ -7,21 +7,19 @@
 #include <sstream>
 #include <vector>
 
-template<typename T>
-std::string to_string_impl(const T& t)
+template <typename T> std::string to_string_impl(const T& t)
 {
     std::stringstream ss;
     ss << t;
     return ss.str();
 }
 
-// This is an alternative to variadic_printing_with_recursion.cpp that is 
+// This is an alternative to variadic_printing_with_recursion.cpp that is
 // quicker to compile, and generates smaller binaries.
-template <typename ... Param>
-std::vector<std::string> to_string(const Param& ... param)
+template <typename... Param> std::vector<std::string> to_string(const Param&... param)
 {
     // Using initializer list:
-    return{to_string_impl(param)...};
+    return {to_string_impl(param)...};
 }
 
 TEST_CASE("Variadic Printing with Initializer Lists")

@@ -15,16 +15,18 @@
 // This is much better than the static_assert and different
 // function names in static_assert_is_base_of.cpp.
 
-template<class T>
-typename std::enable_if<std::is_base_of<Derived, T>::value>::type // This is the return type
-function(std::ostream& ss, const T& object) // ... or things inherited from Derived
+template <class T>
+typename std::enable_if<
+    std::is_base_of<Derived, T>::value>::type // This is the return type
+function(std::ostream& ss, const T& object)   // ... or things inherited from Derived
 {
     ss << object.in_derived() << '\n';
 }
 
-template<class T>
-typename std::enable_if<! std::is_base_of<Derived, T>::value>::type // This is the return type
-function(std::ostream& ss, const T& object) // ... things not inherited from Derived
+template <class T>
+typename std::enable_if<
+    !std::is_base_of<Derived, T>::value>::type // This is the return type
+function(std::ostream& ss, const T& object)    // ... things not inherited from Derived
 {
     ss << object.in_base() << '\n';
 }

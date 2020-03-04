@@ -7,8 +7,7 @@
 // Variadic function that takes any number of containers.
 // Initially, just prints container size
 
-template<typename T>
-void combinations_impl(std::ostream& ss, const T& t)
+template <typename T> void combinations_impl(std::ostream& ss, const T& t)
 {
     ss << t.size() << '\n';
 }
@@ -18,8 +17,8 @@ void combinations(std::ostream& /*ss*/)
 {
 }
 
-template<typename C1, typename ... C>
-void combinations(std::ostream& ss, const C1& c1, const C& ... c)
+template <typename C1, typename... C>
+void combinations(std::ostream& ss, const C1& c1, const C&... c)
 {
     combinations_impl(ss, c1);
     // Then print the remainder

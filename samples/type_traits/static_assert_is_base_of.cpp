@@ -13,17 +13,19 @@
 // allowed.
 // Sub-optimal, but still it was useful for understanding std::is_base_of.
 
-template<class T>
-void can_only_be_passed_derived(std::ostream& ss, const T& object) // ... or things inherited from Derived
+template <class T>
+void can_only_be_passed_derived(std::ostream& ss,
+                                const T& object) // ... or things inherited from Derived
 {
-    static_assert(std::is_base_of<Derived,T>(), "Derived or subclasses only, please");
+    static_assert(std::is_base_of<Derived, T>(), "Derived or subclasses only, please");
     ss << object.in_derived() << '\n';
 }
 
-template<class T>
-void must_not_be_passed_derived(std::ostream& ss, const T& object) // ... things not inherited from Derived
+template <class T>
+void must_not_be_passed_derived(std::ostream& ss,
+                                const T& object) // ... things not inherited from Derived
 {
-    static_assert(!std::is_base_of<Derived,T>(), "Derived no subclasses, please");
+    static_assert(!std::is_base_of<Derived, T>(), "Derived no subclasses, please");
     ss << object.in_base() << '\n';
 }
 

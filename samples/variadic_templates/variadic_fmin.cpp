@@ -10,12 +10,12 @@
 #include <sstream>
 #include <initializer_list>
 
-template<typename First, typename ... T>
-auto variadic_fmin(const First& f, const T& ... t) -> First
+template <typename First, typename... T>
+auto variadic_fmin(const First& f, const T&... t) -> First
 {
     First retval = f;
     // Initializer list ends up holding all the minimum calculations along the way
-    std::initializer_list<First>{(retval = std::fmin(retval, t)) ... };
+    std::initializer_list<First>{(retval = std::fmin(retval, t))...};
     return retval;
 }
 
