@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.9.2)
 project(cpp_snippets)
 
+enable_testing()
+
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
 set(ApprovalTestsDir ${CMAKE_SOURCE_DIR}/third_party/ApprovalTests.cpp)
