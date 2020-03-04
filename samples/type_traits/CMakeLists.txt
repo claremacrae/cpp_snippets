@@ -9,3 +9,4 @@ add_executable(
 )
 set_property(TARGET constexpr_if_base_of PROPERTY CXX_STANDARD 17)
 
+add_test(NAME constexpr_if_base_of COMMAND constexpr_if_base_of)
