@@ -27,6 +27,7 @@ public:
 
 TEST_CASE("Address of const member function compiles")
 {
+    // For motivation, see https://isocpp.org/wiki/faq/pointers-to-members#typedef-for-ptr-to-memfn
     // typedef int (Class::*ClassMemFn)(char x, int y) const;
     using ClassMemFn = int (Class::*)(char x, int y) const;
     ClassMemFn memFn = &Class::memberFunction;
