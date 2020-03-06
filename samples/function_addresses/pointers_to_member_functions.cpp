@@ -22,6 +22,15 @@ public:
     }
 };
 
+
+TEST_CASE("Address of static member function compiles")
+{
+    // typedef int (*ClassStaticFn)(char x, int y);
+    using ClassStaticFn = int (*)(char x, int y);
+    ClassStaticFn staticFn = &Class::staticFunction;
+    CHECK(42 == (*staticFn)('x', 42));
+}
+
 // For motivation, see https://isocpp.org/wiki/faq/pointers-to-members#macro-for-ptr-to-memfn
 #define CALL_MEMBER_FN(object, ptrToMember) ((object).*(ptrToMember))
 
@@ -41,12 +50,4 @@ TEST_CASE("Address of const member function compiles")
 #if __cplusplus >= 201703L
     CHECK(42 == std::invoke(memFn, c, 'x', 42));
 #endif
-}
-
-TEST_CASE("Address of static member function compiles")
-{
-    // typedef int (*ClassStaticFn)(char x, int y);
-    using ClassStaticFn = int (*)(char x, int y);
-    ClassStaticFn staticFn = &Class::staticFunction;
-    CHECK(42 == (*staticFn)('x', 42));
 }
